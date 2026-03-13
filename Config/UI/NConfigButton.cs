@@ -71,7 +71,7 @@ public partial class NConfigButton : NTopBarButton
             var mod = ModConfigFillPatch.CurrentMod;
             if (mod == null) return;
         
-            var modConfig = ModConfigRegistry.Get(mod.pckName);
+            var modConfig = ModConfigRegistry.Get(mod.manifest?.id);
             if (modConfig != null)
             {
                 // Find NModdingScreen

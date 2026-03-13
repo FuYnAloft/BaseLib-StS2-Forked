@@ -10,8 +10,9 @@ public static class ModConfigRegistry
         ModConfigs[modId] = config;
     }
 
-    public static ModConfig? Get(string modId)
+    public static ModConfig? Get(string? modId)
     {
+        if (modId == null) return null;
         return ModConfigs.GetValueOrDefault(modId);
     }
 }
