@@ -19,7 +19,7 @@ public partial class NConfigSlider : Control
 
     public NConfigSlider()
     {
-        SetCustomMinimumSize(new Vector2(324, 64));
+        SetCustomMinimumSize(new Vector2(320, 64));
         SizeFlagsHorizontal = SizeFlags.ShrinkEnd;
         SizeFlagsVertical = SizeFlags.Fill;
     }

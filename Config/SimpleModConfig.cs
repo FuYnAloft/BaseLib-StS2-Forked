@@ -13,6 +13,12 @@ public class SimpleModConfig : ModConfig
         
         options.Size = optionContainer.Size;
         options.AddThemeConstantOverride("separation", 8);
+
+        // Add "margin" to the top, to keep the edge-element distance same as on the left and right
+        var spacer = new Control();
+        spacer.CustomMinimumSize = new Vector2(0, 16);
+        optionContainer.AddChild(spacer);
+
         optionContainer.AddChild(options);
 
         Type? t = null;
@@ -32,7 +38,8 @@ public class SimpleModConfig : ModConfig
                 if (sectionName != null && sectionName != currentSection)
                 {
                     currentSection = sectionName;
-                    options.AddChild(CreateSectionLabel(currentSection));
+                    var isFirstChild = i == 0;
+                    options.AddChild(CreateSectionLabel(currentSection, alignToTop: isFirstChild));
                 }
 
                 // Create the option control

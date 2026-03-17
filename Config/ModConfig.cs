@@ -197,10 +197,6 @@ public abstract partial class ModConfig
     public NConfigSlider MakeSliderOption(Control parent, PropertyInfo property)
     {
         MarginContainer container = MakeOptionContainer(parent, "Slider_" + property.Name, GetLabelText(property.Name));
-
-        // Slider overlaps the popup window edge a bit with the default margin
-        container.AddThemeConstantOverride("margin_right", 12 + 12);
-
         var slider = new NConfigSlider().TransferAllNodes(SceneHelper.GetScenePath("screens/settings_slider"));
         slider.Initialize(this, property);
         container.AddChild(slider);
@@ -266,8 +262,8 @@ public abstract partial class ModConfig
     {
         MarginContainer container = new();
         container.Name = name;
-        container.AddThemeConstantOverride("margin_left", 12);
-        container.AddThemeConstantOverride("margin_right", 12);
+        container.AddThemeConstantOverride("margin_left", 24);
+        container.AddThemeConstantOverride("margin_right", 24);
         container.MouseFilter = Control.MouseFilterEnum.Ignore;
 
         container.CustomMinimumSize = new Vector2(0, 64);
@@ -312,16 +308,21 @@ public abstract partial class ModConfig
         return label;
     }
 
-    protected MarginContainer CreateSectionLabel(string labelName)
+    protected MarginContainer CreateSectionLabel(string labelName, bool alignToTop = false)
     {
         MarginContainer container = new();
         container.Name = "Container_" + labelName.Replace(" ", "");
-        container.AddThemeConstantOverride("margin_left", 12);
-        container.AddThemeConstantOverride("margin_right", 12);
+        container.AddThemeConstantOverride("margin_left", 24);
+        container.AddThemeConstantOverride("margin_right", 24);
         container.MouseFilter = Control.MouseFilterEnum.Ignore;
 
         var label = CreateLabel($"[center][b]{GetLabelText(labelName)}[/b][/center]", container, 40);
         label.Name = "SectionLabel_" + labelName.Replace(" ", "");
+
+        if (alignToTop)
+        {
+            label.VerticalAlignment = VerticalAlignment.Top;
+        }
 
         return container;
     }
