@@ -21,7 +21,7 @@ static class SceneConversionPatch
     static MethodBase TargetMethod()
     {
         // Explicitly pick the non-generic Instantiate(GenEditState), not Instantiate<T>(GenEditState)
-        var method = typeof(PackedScene).GetMethod("Instantiate", 0, []);
+        var method = typeof(PackedScene).GetMethod("Instantiate", 0, [typeof(PackedScene.GenEditState)]);
 
         if (method == null)
             throw new InvalidOperationException(
