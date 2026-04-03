@@ -54,7 +54,7 @@ public abstract partial class ModConfig
 
     private readonly string _path;
     public string ModPrefix { get; private set; }
-    public string? ModId { get; set; } // Injected by ModConfigRegistry
+    [ConfigIgnore] public string? ModId { get; set; } // Injected by ModConfigRegistry
 
     private readonly string _modConfigName;
     private bool _savingDisabled;

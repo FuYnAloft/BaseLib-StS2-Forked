@@ -14,7 +14,7 @@ namespace BaseLib.Config.UI;
 
 public partial class NModConfigSubmenu : NSubmenu
 {
-    private NBackButton? _backButton;
+    private new NBackButton? _backButton;
     private NNativeScrollableContainer _leftScrollArea;
     private VBoxContainer _modListVbox;
     private Control _modListPanel;
