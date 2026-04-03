@@ -9,6 +9,11 @@ public abstract class CustomPotionModel : PotionModel, ICustomModel, ILocalizati
 {
     [Obsolete("Pass value in constructor instead. Field will be deleted.")]
     public virtual bool AutoAdd => true;
+
+    public CustomPotionModel() : this(true)
+    {
+        
+    }
     
     public CustomPotionModel(bool autoAdd = true)
     {
